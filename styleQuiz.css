@@ -47,7 +47,7 @@ footer{
     border-radius: 5px;
     background-color: #4CAF50;
     color: white;
-    cursor: pointer;
+    cursor: not-allowed;
     transition: background-color 0.3s ease;
 }
 
@@ -79,4 +79,8 @@ h1{
 }
 h3{
     text-align: center;
+}
+
+button:disabled{
+    cursor: not-allowed;
 }
