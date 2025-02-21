@@ -19,7 +19,7 @@ function loadQuestion(){
       optionNumber++
       const optionButton = document.createElement('button');
       optionButton.innerText = option;
-      optionButton.classList.add(optionNumber);
+      optionButton.dataset.index = optionNumber;
       optionsZone.appendChild(optionButton);
       optionButton.addEventListener('click', function(event){
         checkAnswer(event);
@@ -65,7 +65,7 @@ function checkAnswer(event) {
   });
   
   //On compare la réponse sélectionnée avec la bonne réponse
-  if (clickedButton.classList == currentQuestion.correct_answer){
+  if (clickedButton.index == currentQuestion.correct_answer){
     clickedButton.style.borderColor = "green";
     clickedButton.style.backgroundColor = "lightgreen";
     userScore += 2;
