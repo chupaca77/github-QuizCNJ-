@@ -56,6 +56,7 @@ replayButton.addEventListener('click', () => {
 
 function checkAnswer(event) {
   const clickedButton = event.target
+  let clickedIndex = clickedButton.getAttribute('data-index')
   const currentQuestion = quiz_montegolri.questions[currentQuestionIndex]
   
   // On rend incliquable les autres réponses possibles
@@ -63,9 +64,10 @@ function checkAnswer(event) {
   allButtonsOptions.forEach(button => {
     button.disabled = true; 
   });
+
   
   //On compare la réponse sélectionnée avec la bonne réponse
-  if (clickedButton.index == currentQuestion.correct_answer){
+  if (clickedIndex == currentQuestion.correct_answer){
     clickedButton.style.borderColor = "green";
     clickedButton.style.backgroundColor = "lightgreen";
     userScore += 2;
