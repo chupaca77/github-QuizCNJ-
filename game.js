@@ -1,4 +1,4 @@
-import { quiz_montegolri } from './scriptQuizMontegolri.js';
+import { quiz_montegolri } from './scriptQuiz.js';
 
 const questionZone = document.querySelector(".question")
 const optionsZone =  document.querySelector(".options")
