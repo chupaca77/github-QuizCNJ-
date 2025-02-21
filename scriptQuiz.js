@@ -3,7 +3,7 @@ export const quiz_montegolri = {
       {
         text: "Pourquoi les flamants roses sont-ils roses ?",
         options: [
-          "Parce qu'ils sont roses, c'est comme ça. Est-ce qu'on demande à Eric Zemmour pourquoi il est blanc?",
+          "Parce qu'ils sont roses, c'est comme ça. Est-ce qu'on demande à Eric Zemmour pourquoi il est blanc ?",
           "Parce qu'ils bouffent trop de crevettes",
           "Parce que le plumage, blanc d'origine, absorbe les rayons du soleil mais ne restitue que la couleur rose",
           "Parce qu'ils sont hyper girly"
