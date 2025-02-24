@@ -130,13 +130,25 @@ h3 {
     padding: 0 15px;
 }
 
-#next-button, #replay-button {
+#next-button {
     padding: 8px 25px;
     border: none;
     border-radius: 5px;
     background-color: #ff7f50;
     color: white;
     cursor: not-allowed;
+    transition: background-color 0.3s ease;
+    font-family: "georgia";
+    font-size: clamp(12px, 2vw, 16px);
+}
+
+#replay-button {
+    padding: 8px 25px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ff7f50;
+    color: white;
+    cursor: pointer;
     transition: background-color 0.3s ease;
     font-family: "georgia";
     font-size: clamp(12px, 2vw, 16px);
@@ -184,6 +196,16 @@ footer {
 button:disabled{
     cursor: not-allowed;
 }
+
+#confetti-canvas {
+    position: fixed; 
+    z-index: 999; 
+    top: 0; 
+    left: 0; 
+    width: 100vw; 
+    height: 100vh; 
+    pointer-events: none;
+  }
 
 /* Media queries pour les petits écrans */
 @media screen and (max-width: 480px) {

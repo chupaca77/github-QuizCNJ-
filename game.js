@@ -49,6 +49,7 @@ nextButton.addEventListener('click', () => {
     
   } else {
     questionZone.innerText = 'Le quiz est terminé !';
+    launchConfetti()
     let scoreMessage = "";
       if (userScore >= 0 & userScore <= 4) {
         scoreMessage = "Oula... On va dire que tu t'es trompé d'examen et que t'étais pas censé être là. 😅 Mais bon, au moins, t'as essayé, et c'est déjà courageux !"
@@ -63,8 +64,7 @@ nextButton.addEventListener('click', () => {
       }
         optionsZone.innerHTML = `Ton score est de ${userScore} sur 20<br><br>${scoreMessage}`;
         nextButton.style.display = 'none';
-    replayButton.style.display = 'inline-block';
-    
+        replayButton.style.display = 'inline-block';
   }
   ;
 });
@@ -147,6 +147,16 @@ function startTimer() {
 },4000)
 }
 
+
+function launchConfetti(){
+  const canvas = document.querySelector('#confetti-canvas')
+  let myConfetti = confetti.create(canvas, { resize: true, useWorker: true });
+  myConfetti({
+    particleCount: 100,
+    spread: 160
+  });
+
+}
 
 loadQuestion()
 
