@@ -10,7 +10,7 @@ let userScore = 0
 let barreProgression = 0;
 let SpawnBarreProgression = 0;
 let startTime;
-
+let stopConfetti;
 //On charge la question et ses options de réponse
 
 function loadQuestion(){
@@ -50,6 +50,7 @@ replayButton.addEventListener('click', () => {
   nextButton.style.display = 'inline-block';
   replayButton.style.display = 'none';
   loadQuestion()
+  clearInterval(stopConfetti);
 }
 )
 
@@ -97,7 +98,10 @@ function nextFunction(){
     questionZone.innerText = 'Le quiz est terminé !';
     let endingMusic = document.querySelector('audio')
     endingMusic.play()
+    
     launchConfetti()
+    stopConfetti = setInterval(launchConfetti, 2000)
+
     let scoreMessage = "";
       if (userScore >= 0 & userScore <= 4) {
         scoreMessage = "Oula... On va dire que tu t'es trompé d'examen et que t'étais pas censé être là. 😅 Mais bon, au moins, t'as essayé, et c'est déjà courageux !"
