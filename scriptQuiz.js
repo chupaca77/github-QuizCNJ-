@@ -34,7 +34,7 @@ export const quiz_montegolri = {
         text: "Pourquoi le festival Woodstock 1999 est-il resté dans l'histoire comme un immense fiasco ?",
         options: [
           "Les organisateurs, en quête d'authenticité, ont remplacé les toilettes par de vrais buissons… et de vrais ours",
-          "L'eau était vendue à prix d'or, les festivaliers assoiffés ont pété les canalisations, transformant le site en marécage de boue (et d'autres substances moins glorieuses)",
+          "L'eau était vendue à prix d'or, les festivaliers assoiffés ont pété les canalisations, transformant le site en marécage de boue",
           "Un solo de guitare a duré si longtemps que des spectateurs ont eu le temps de passer leur bac philo",
           "Les Red Hot Chili Peppers ont joué une reprise de Fire de Jimi Hendrix… pile au moment où des émeutiers mettaient réellement le feu au festival"
         ],
