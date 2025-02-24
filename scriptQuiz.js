@@ -86,7 +86,7 @@ export const quiz_montegolri = {
       
       
       {
-        text: "Peu après le tournage du film d'horreur Cannibal Holocaust(1980), le réalisateur Ruggero Deodato a failli finir en prison. Pourquoi ?",
+        text: "Peu après le tournage du film d'horreur Cannibal Holocaust (1980), le réalisateur Ruggero Deodato a failli finir en prison. Pourquoi ?",
         options: [
           "Il a oublié de prévenir les acteurs qu'ils allaient être mangés pour de vrai",
           "La police pensait qu'il avait réellement massacré ses acteurs et tourné un snuff movie",
