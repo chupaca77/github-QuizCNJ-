@@ -11,6 +11,8 @@ let barreProgression = 0;
 let SpawnBarreProgression = 0;
 let startTime;
 let stopConfetti;
+let timerInterval;
+let endingMusic;
 //On charge la question et ses options de réponse
 
 function loadQuestion(){
@@ -51,6 +53,7 @@ replayButton.addEventListener('click', () => {
   replayButton.style.display = 'none';
   loadQuestion()
   clearInterval(stopConfetti);
+  endingMusic.pause();
 }
 )
 
@@ -85,10 +88,26 @@ function checkAnswer(event) {
   
   startTimer();
   nextButton.addEventListener('click', nextFunction);
+
+  // décompte dans le bouton suivant
+  let countdown=4;
+  timerInterval = setInterval(() => {
+    countdown--;
+    nextButton.innerText = `Suivant ${countdown}`;
+    if (countdown === 0) {
+      nextButton.innerText = "Suivant";
+      clearInterval(timerInterval);
+    }
+  }, 1000);
 }
 
 function nextFunction(){
+  // on enleve le compteur
   clearTimeout(startTime);
+  // on eneleve le décompte
+  clearInterval(timerInterval);
+  // on redonne le nom du bouton
+  nextButton.innerText = "Suivant";
   currentQuestionIndex++;
   if (currentQuestionIndex<quiz_montegolri.questions.length) {
     loadQuestion();
@@ -96,7 +115,7 @@ function nextFunction(){
     
   } else {
     questionZone.innerText = 'Le quiz est terminé !';
-    let endingMusic = document.querySelector('audio')
+    endingMusic = document.getElementById("music");
     endingMusic.play()
     
     launchConfetti()
