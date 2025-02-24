@@ -20,3 +20,5 @@ Objectifs pédagogiques
     
 4. Développer des compétences en débogage et gestion d'erreurs 🐞
 
+5. Développer des compétences de travail en groupe et de gestion de projet
+
