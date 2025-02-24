@@ -224,6 +224,7 @@ button:disabled{
 /* CSS */
 #progressContainer {
     width: 100%;
+    height: 15px;
     background-color: #cccccc;
     border-radius: 5px;
     overflow: hidden;
@@ -231,10 +232,10 @@ button:disabled{
   }
   
   #progressBar {
-    width: 50%;
+    width: 0%;
     height: 20px;
-    background-color: #4caf50;
-    
+    background: linear-gradient(223deg, rgba(26,117,255,1) 0%, rgba(80,202,215,1) 100%);
+    transition: width 2s ease 0s;
   }
   
   .percentage {
@@ -246,3 +247,4 @@ button:disabled{
     color: white;
     padding-right: 5px;
   }
+
