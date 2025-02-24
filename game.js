@@ -7,6 +7,9 @@ const nextButton = document.querySelector("#next-button")
 
 let currentQuestionIndex = 0
 let userScore = 0
+let barreProgression = 0;
+let SpawnBarreProgression = 0;
+
 
 //On charge la question et ses options de réponse
 
@@ -23,6 +26,10 @@ function loadQuestion(){
       optionsZone.appendChild(optionButton);
       optionButton.addEventListener('click', function(event){
         checkAnswer(event);
+        barreProgression += 10;
+        SpawnBarreProgression += 10;
+        document.getElementById("progressBar").style.width = barreProgression + "%";
+        document.getElementsByClassName("percentage")[0].innerHTML = SpawnBarreProgression + "%";
       } )
     }
   )
@@ -60,6 +67,10 @@ nextButton.addEventListener('click', () => {
 replayButton.addEventListener('click', () => {
   currentQuestionIndex = 0;
   userScore = 0;
+  barreProgression = 0;
+  SpawnBarreProgression = 0;
+  document.getElementById("progressBar").style.width = barreProgression + "%";
+  document.getElementsByClassName("percentage")[0].innerHTML = SpawnBarreProgression + "%";
   nextButton.style.display = 'inline-block';
   replayButton.style.display = 'none';
   loadQuestion()
