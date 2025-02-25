@@ -157,4 +157,12 @@ function launchConfetti(){
   });
 }
 
+//Ajout de la possibilité de presser la touche Entrée au lieu de cliquer sur Suivant
+
+document.addEventListener('keydown', function(event) {
+  if (event.code === 'Enter') {
+    document.getElementById('next-button').click();
+  }
+});
+
 loadQuestion()
