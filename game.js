@@ -4,6 +4,7 @@ const questionZone = document.querySelector(".question")
 const optionsZone =  document.querySelector(".options")
 const replayButton = document.querySelector("#replay-button")
 const nextButton = document.querySelector("#next-button")
+const scoreZone = document.querySelector(".scoreMessage")
 
 let currentQuestionIndex = 0
 let userScore = 0
@@ -133,7 +134,8 @@ function nextFunction(){
       } else if (userScore === 20) {
         scoreMessage = "Alors là, chapeau ! T'as tout bon, t'es un(e) génie, ou alors t'as eu un gros coup de chance… mais on va dire que c'est du talent. Respect éternel !"
       }
-        optionsZone.innerHTML = `Ton score est de ${userScore} sur 20<br><br>${scoreMessage}`;
+        optionsZone.innerHTML = `Ton score est de ${userScore} sur 20`;
+        scoreZone.innerHTML = `${scoreMessage}`;
         nextButton.style.display = 'none';
         replayButton.style.display = 'inline-block';
   }
