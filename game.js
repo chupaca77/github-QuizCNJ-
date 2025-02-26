@@ -5,6 +5,7 @@ const optionsZone =  document.querySelector(".options")
 const replayButton = document.querySelector("#replay-button")
 const nextButton = document.querySelector("#next-button")
 const scoreZone = document.querySelector(".scoreMessage")
+const maximumScore = document.querySelector(".ScoreMax")
 
 let currentQuestionIndex = 0
 let userScore = 0
@@ -14,7 +15,37 @@ let startTime;
 let stopConfetti;
 let timerInterval;
 let endingMusic;
+let tableauScore =[]
+let scoreMax;
 
+
+// Charger l'historique des scores depuis sessionStorage (ou initialiser un tableau vide)
+function seeMaxScore(){
+  let scoreActuel = sessionStorage.getItem('score')
+  let scoreEnTableau = JSON.parse(scoreActuel)
+  if (Array.isArray(scoreEnTableau) ){
+    tableauScore = scoreEnTableau
+    scoreMax = Math.max(...tableauScore)
+    console.log(Math.max(...tableauScore));
+  }
+}
+
+
+// Mettre à jour l'historique des scores dans tableauScore et sessionStorage
+function updateScore() {
+    tableauScore.push(userScore); // Ajoute le nouveau score à la fin du tableau
+    sessionStorage.setItem('score', JSON.stringify(tableauScore)); // Sauvegarde dans sessionStorage
+}
+
+function ecrireScore() {
+  console.log("le score max est ",scoreMax);
+  if (scoreMax === 0){
+    maximumScore.innerHTML = "Aucun score enregistré";
+  }
+    else{
+      maximumScore.innerHTML = `Le meilleur score est de : ${scoreMax}`;
+    }
+}
 
 // Démarrer le player audio musique de fond
 const musicAscenseur = document.getElementById("music1");
@@ -168,6 +199,14 @@ function nextFunction() {
         scoreZone.innerHTML = `${scoreMessage}`;
         nextButton.style.display = 'none';
         replayButton.style.display = 'inline-block';
+
+        // je prend le score et je l'ajoute au tableaux de score
+        updateScore(userScore);
+        // cherche le meilleur score dans le tableau
+        seeMaxScore();
+        //On affiche le meilleur score
+        ecrireScore(userScore);
+        
   }
 }
 
