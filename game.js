@@ -14,9 +14,21 @@ let startTime;
 let stopConfetti;
 let timerInterval;
 let endingMusic;
-//On charge la question et ses options de réponse
 
-function loadQuestion(){
+
+// Démarrer le player audio musique de fond
+const musicAscenseur = document.getElementById("music1");
+document.body.addEventListener("click", startMusic);
+
+function startMusic() {
+  if (musicAscenseur.paused) {
+      musicAscenseur.play();
+  }
+  document.body.removeEventListener("click", startMusic);
+}
+
+//On charge la question et ses options de réponse
+function loadQuestion() {
   optionsZone.innerHTML='';
   const currentQuestion = quiz_montegolri.questions[currentQuestionIndex]
   questionZone.innerText = currentQuestion.text
@@ -58,6 +70,17 @@ replayButton.addEventListener('click', () => {
 }
 )
 
+const rightAnswer = document.getElementById("right");
+const wrongAnswer = document.getElementById("wrong");
+
+function startSound(isCorrect) {
+  if (isCorrect) {
+    rightAnswer.play();
+  } else {
+    wrongAnswer.play();
+  }
+}
+
 function checkAnswer(event) {
   const clickedButton = event.target
   let clickedIndex = clickedButton.getAttribute('data-index')
@@ -74,6 +97,7 @@ function checkAnswer(event) {
     clickedButton.style.borderColor = "green";
     clickedButton.style.backgroundColor = "lightgreen";
     userScore += 2;
+    startSound(true);
   } else { 
     clickedButton.style.borderColor= "red";
     const rightAnswerSelector = `.options button:nth-of-type(${currentQuestion.correct_answer})`
@@ -81,6 +105,7 @@ function checkAnswer(event) {
     rightAnswerButton.style.borderColor = "green";
     rightAnswerButton.style.backgroundColor = "lightgreen";
     rightAnswerButton.style.fontWeight = "bold";
+    startSound(false);
   }
   
   // On rend le bouton Suivant cliquable à nouveau  
@@ -102,7 +127,7 @@ function checkAnswer(event) {
   }, 1000);
 }
 
-function nextFunction(){
+function nextFunction() {
   // on enleve le compteur
   clearTimeout(startTime);
   // on eneleve le décompte
@@ -116,9 +141,13 @@ function nextFunction(){
     
   } else {
     questionZone.innerText = 'Le quiz est terminé !';
-    endingMusic = document.getElementById("music");
+
+    musicAscenseur.pause();
+    musicAscenseur.currentTime = 0; // Remet à zéro pour éviter un repeat
+
+    endingMusic = document.getElementById("music2");
     endingMusic.play()
-    
+
     launchConfetti()
     stopConfetti = setInterval(launchConfetti, 2000)
 
@@ -148,7 +177,7 @@ function startTimer() {
         startTime = setTimeout(nextFunction, 4000);
       }
 
-function launchConfetti(){
+function launchConfetti() {
   const canvas = document.querySelector('#confetti-canvas')
   let myConfetti = confetti.create(canvas, { resize: true, useWorker: true });
   myConfetti({
@@ -165,4 +194,12 @@ document.addEventListener('keydown', function(event) {
   }
 });
 
-loadQuestion()
+//Ajout de la possibilité de presser la touche Entrée au lieu de cliquer sur Suivant
+
+document.addEventListener('keydown', function(event) {
+  if (event.code === 'Enter') {
+    document.getElementById('next-button').click();
+  }
+});
+
+loadQuestion();
