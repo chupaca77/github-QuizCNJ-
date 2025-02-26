@@ -30,6 +30,7 @@ function startMusic() {
 //On charge la question et ses options de réponse
 function loadQuestion() {
   optionsZone.innerHTML='';
+  scoreZone.innerHTML='';
   const currentQuestion = quiz_montegolri.questions[currentQuestionIndex]
   questionZone.innerText = currentQuestion.text
   let optionNumber = 0
@@ -194,12 +195,5 @@ document.addEventListener('keydown', function(event) {
   }
 });
 
-//Ajout de la possibilité de presser la touche Entrée au lieu de cliquer sur Suivant
-
-document.addEventListener('keydown', function(event) {
-  if (event.code === 'Enter') {
-    document.getElementById('next-button').click();
-  }
-});
 
 loadQuestion();
